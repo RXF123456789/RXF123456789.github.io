@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Web</title>
+		<!-- vue.js -->
+		<script src="./js/vue.js"></script>
+		<!-- element-ui -->
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="./js/element-ui.js"></script>
+		<!-- caman.js -->
+		<script src="./js/caman.js"></script>
+		<!-- index.css -->
+		<link rel="stylesheet" href="./css/index.css" />
+	</head>
+	<body>
+		<div id="app">
+			<el-container>
+				<el-header style="margin-bottom: 10px">
+					<el-menu
+						:default-active="activeIndex"
+						class="el-menu-demo"
+						mode="horizontal"
+						@select="handleSelect"
+					>
+						<el-menu-item index="1">首页</el-menu-item>
+						<el-submenu index="2">
+							<template slot="title">技术介绍</template>
+							<el-menu-item index="2-1">图像压缩</el-menu-item>
+							<el-menu-item index="2-2">图像增强与美化</el-menu-item>
+							<el-menu-item index="2-3">图像合成与特效</el-menu-item>
+						</el-submenu>
+						<el-menu-item index="3">案例分析</el-menu-item>
+						<el-menu-item index="4">关于我们</el-menu-item>
+					</el-menu>
+				</el-header>
+				<el-main>
+					<div class="block">
+						<h3>探索网页设计的艺术与科技 —— 计算机图像处理技术的应用</h3>
+						<el-divider content-position="center">
+							提升视觉体验，优化用户互动 —— 走进图像处理技术的世界
+						</el-divider>
+						<el-carousel :interval="4000" type="card" height="400px">
+							<el-carousel-item v-for="url,index in urls" :key="index">
+								<el-image :src="url" fit="cover" @click="handleBannerClick(index)"></el-image>
+							</el-carousel-item>
+						</el-carousel>
+					</div>
+					<div class="block_2">
+						<h3>技术介绍</h3>
+						<el-divider content-position="center">
+							在数字时代，每一张图片都讲述着故事。了解如何通过图像处理技术让这些故事更加生动
+						</el-divider>
+						<el-row :gutter="12">
+							<el-col :span="8">
+								<el-card shadow="hover">
+									<h4>图像压缩</h4>
+									<p>
+										在网页设计中，图像压缩是一门艺术，也是一种科学。它关乎如何在不牺牲视觉质量的前提下，减少图像文件的体积。JPEG和PNG格式是我们的两大盟友：JPEG擅长于压缩照片类图像，通过有损压缩技术显著减小文件大小，而PNG则以其无损压缩技术，保持图像的每一个细节，尤其适合需要透明背景的设计元素。通过精心选择压缩格式和调整参数，我们能够确保网页的加载速度和视觉体验达到完美平衡。
+									</p>
+								</el-card>
+							</el-col>
+							<el-col :span="8">
+								<el-card shadow="hover">
+									<h4>图像增强</h4>
+									<p>
+										图像增强技术赋予网页设计师以超凡的视觉调整能力，通过精心提升图像的对比度、细致调整色彩平衡，以及巧妙应用各种创意滤镜效果，如黑白、复古或模糊，不仅完美适应网页的整体风格和情感表达，更进一步增强了图像的吸引力和表现力，让每一张图片都讲述一个引人入胜的故事，显著提升了网页的视觉冲击力和艺术感染力，为用户带来更加丰富和深刻的视觉体验，同时扩展了设计师在视觉叙事上的创造力边界。
+									</p>
+								</el-card>
+							</el-col>
+							<el-col :span="8">
+								<el-card shadow="hover">
+									<h4>图像分割与合成</h4>
+									<p>
+										图像分割与合成技术是网页设计中的视觉魔法。它允许我们智能地识别和分离图像中的不同对象，实现精准的剪裁和背景去除，从而为设计提供更多的灵活性和可能性。进一步地，通过合成技术，我们可以将多个图像元素无缝地融合在一起，创造出全新的视觉作品。无论是制作全景图像，还是设计独特的艺术组合，图像分割与合成技术都能激发设计师的无限创意，为用户带来前所未有的视觉体验。
+									</p>
+								</el-card>
+							</el-col>
+						</el-row>
+					</div>
+					<div class="block_3">
+						<h3>我们的使命</h3>
+						<el-divider content-position="center">
+							致力于通过图像处理技术，为网页设计带来革命性的变革
+						</el-divider>
+						<el-row :gutter="12">
+							<el-col>
+								<el-card shadow="hover">
+									<div style="display: flex; align-items: center">
+										<el-image src="./images/ai_face.jpg" fit="cover" style="flex: 3"></el-image>
+										<div style="flex: 8">
+											<p>
+												在未来的研究展望中，计算机图像处理技术正站在一个多学科交叉融合的新时代门槛上。随着人工智能技术的不断成熟，特别是深度学习算法的应用，图像处理技术将变得更加自动化和智能化，能够实现从图像增强到复杂场景的自动识别和分类的全方位优化。5G技术的普及将为网页设计带来革命性的变革，提供更快的数据传输速度和更低的延迟，使得高分辨率图像和视频的实时处理成为可能，极大地丰富了用户的交互体验。
+											</p>
+											<p>
+												同时，虚拟现实（VR）和增强现实（AR）技术的融合将为网页设计带来全新的视角，使用户能够通过沉浸式体验更直观地感受内容，无论是在线购物的虚拟试穿，还是远程教育的现场模拟，都将因技术的融合而变得更加生动和实用。大数据的分析能力将进一步推动个性化推荐系统的发展，使网页设计能够根据用户的行为和偏好提供定制化的内容，提升用户体验的同时，也为网站运营提供了精准的数据支持。
+											</p>
+											<p>
+												然而，在技术的快速发展中，我们也必须重视其带来的挑战，包括数据安全、隐私保护、算法偏见等问题。技术的可持续发展需要我们在创新的同时，考虑其对社会、环境和伦理的影响，确保技术进步能够惠及更广泛的群体，促进公平和包容。此外，随着计算能力的不断提升，未来网页设计将更加注重实时性和动态性，实现更加丰富和生动的视觉效果，为用户提供一个高度互动和个性化的数字体验。综合来看，计算机图像处理技术的未来发展将推动网页设计进入一个智能化、个性化、沉浸式和可持续的新时代。
+											</p>
+										</div>
+									</div>
+								</el-card>
+							</el-col>
+						</el-row>
+					</div>
+				</el-main>
+				<el-footer>
+					<el-divider content-position="center">© 2024 Ren Xiaofeng 版权所有</el-divider>
+				</el-footer>
+				<el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+			</el-container>
+		</div>
+		<!-- index.js -->
+		<script src="./js/index.js"></script>
+	</body>
+</html>
